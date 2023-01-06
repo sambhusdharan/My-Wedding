@@ -7,14 +7,15 @@ def new_wedding(request):
     obj=wedding.objects.all()
     event=wedding_event.objects.all()
     stories=story.objects.all()
-    return render(request,"index.html",{'results':obj,'event':event ,'story':stories})
+    photos=gallery.objects.all()
+    return render(request,"index.html",{'results':obj,'event':event ,'story':stories,'gallery':photos})
 
-# def wedding_even(request):
-#     objs=story.objects.all
-#     return render(request,"index.html",{'result':objs})
+def memories(request):
+    detail=wedding.objects.all()
+    memory=story.objects.all()
+    return render(request,"story.html",{'detail':detail,'memory':memory})
 
-# def addition(request):
-#     numb1=int(request.POST['num1'])
-#     numb2=int(request.POST['num2'])
-#     numb3=numb1+numb2
-#     return render(request,'result.html',{"val":numb3})
+def addition(request):
+    result = wedding.objects.all()
+    return render(request,'check.html',{"val":result})
+

@@ -1,111 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
 {% load static %}
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>&lt;!&ndash;> <html class="no-js"> &lt;!&ndash;<![endif]-->
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Wedding &mdash; 100% Free Fully Responsive HTML5 Template by FREEHTML5.co</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
-	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
-	<meta name="author" content="FREEHTML5.CO" />
 
-  <!--
-	//////////////////////////////////////////////////////
-
-	FREE HTML5 TEMPLATE
-	DESIGNED & DEVELOPED by FREEHTML5.CO
-
-	Website: 		http://freehtml5.co/
-	Email: 			info@freehtml5.co
-	Twitter: 		http://twitter.com/fh5co
-	Facebook: 		https://www.facebook.com/fh5co
-
-	//////////////////////////////////////////////////////
-	 -->
-
-  	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
-
-	<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
-	<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
-
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-
-	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
-
-	<!-- Owl Carousel  -->
-	<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
-	<link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
-
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-	<!-- Modernizr JS -->
-	<script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="{% static 'js/respond.min.js' %}"></script>
-	<![endif]-->
-
-	</head>
-	<body>
-
-	<div class="fh5co-loader"></div>
-
-	<div id="page">
-	<nav class="fh5co-nav" role="navigation">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-2">
-					<div id="fh5co-logo"><a href="index.html"> My Wedding<strong>.</strong></a></div>
-				</div>
-				<div class="col-xs-10 text-right menu-1">
-					<ul>
-						<li class="active"><a href="index.html">Home</a></li>
-						<li><a href="about.html">Story</a></li>
-						<li class="has-dropdown">
-							<a href="services.html">Services</a>
-							<ul class="dropdown">
-								<li><a href="#">Web Design</a></li>
-								<li><a href="#">eCommerce</a></li>
-								<li><a href="#">Branding</a></li>
-								<li><a href="#">API</a></li>
-							</ul>
-						</li>
-						<li class="has-dropdown">
-							<a href="gallery.html">Gallery</a>
-							<ul class="dropdown">
-								<li><a href="#">HTML5</a></li>
-								<li><a href="#">CSS3</a></li>
-								<li><a href="#">Sass</a></li>
-								<li><a href="#">jQuery</a></li>
-							</ul>
-						</li>
-						<li><a href="contact.html">Contact</a></li>
-					</ul>
-				</div>
-			</div>
-
-		</div>
-	</nav>
    {% for result in results %}
 	<header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url({% static 'images/bg.jpg' %});" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
@@ -131,8 +27,8 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
 					<h2>Hello!</h2>
-					<h3>November 28th, 2016 ,
-						{{result.wedding_place_address}}, {{result.wedding_place}}</h3>
+					<h3>{{result.wedding_date|date:"jS M Y"}},
+						{{result.wedding_place_address}} , {{result.wedding_place}}</h3>
 					<p>{{result.Wedding_quote}}</p>
 				</div>
 			</div>
@@ -166,7 +62,7 @@
 		</div>
 	</div>
     {% endfor %}
-
+<!--    {% include 'check.html' %}-->
 
 	<div id="fh5co-event" class="fh5co-bg" style="background-image:url({% static 'images/bg2.jpg' %});">
 		<div class="overlay"></div>
@@ -292,87 +188,86 @@
 			<div class="row row-bottom-padded-md">
 				<div class="col-md-12">
 					<ul id="fh5co-gallery-list">
+                       {% for photos in gallery %}
+						<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url({{ photos.photo_1.url }}); ">
+						<a href="{{ photos.photo_1.url }}">
 
-						<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url({% static 'images/bg3.jpg' %}); ">
-						<a href="{% static 'images/gallery-1.jpg' %}">
-<!--                        <a href="{% static 'images/gallery-2.jpg' %}">-->
-<!--                        <a href="{% static 'images/gallery-3.jpg' %}">-->
 							<div class="case-studies-summary">
 								<span>14 Photos</span>
-								<h2>Two Glas of Juice</h2>
+								<h2>{{photos.Gallery_name}}</h2>
 							</div>
 						</a>
-					</li>
+					    </li>
+                        {% endfor %}
+<!--					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url({% static 'images/gallery-2.jpg' %}); ">-->
+<!--						<a href="#" class="color-2">-->
+<!--							<div class="case-studies-summary">-->
+<!--								<span>30 Photos</span>-->
+<!--								<h2>Timer starts now!</h2>-->
+<!--							</div>-->
+<!--						</a>-->
+<!--					</li>-->
 
-					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url({% static 'images/gallery-2.jpg' %}); ">
-						<a href="#" class="color-2">
-							<div class="case-studies-summary">
-								<span>30 Photos</span>
-								<h2>Timer starts now!</h2>
-							</div>
-						</a>
-					</li>
 
+<!--					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url({% static 'images/gallery-3.jpg' %}); ">-->
+<!--						<a href="#" class="color-3">-->
+<!--							<div class="case-studies-summary">-->
+<!--								<span>90 Photos</span>-->
+<!--								<h2>Beautiful sunset</h2>-->
+<!--							</div>-->
+<!--						</a>-->
+<!--					</li>-->
+<!--					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url({% static 'images/gallery-4.jpg' %}); ">-->
+<!--						<a href="#" class="color-4">-->
+<!--							<div class="case-studies-summary">-->
+<!--								<span>12 Photos</span>-->
+<!--								<h2>Company's Conference Room</h2>-->
+<!--							</div>-->
+<!--						</a>-->
+<!--					</li>-->
 
-					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url({% static 'images/gallery-3.jpg' %}); ">
-						<a href="#" class="color-3">
-							<div class="case-studies-summary">
-								<span>90 Photos</span>
-								<h2>Beautiful sunset</h2>
-							</div>
-						</a>
-					</li>
-					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url({% static 'images/gallery-4.jpg' %}); ">
-						<a href="#" class="color-4">
-							<div class="case-studies-summary">
-								<span>12 Photos</span>
-								<h2>Company's Conference Room</h2>
-							</div>
-						</a>
-					</li>
+<!--						<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url({% static 'images/gallery-5.jpg' %}); ">-->
+<!--							<a href="#" class="color-3">-->
+<!--								<div class="case-studies-summary">-->
+<!--									<span>50 Photos</span>-->
+<!--									<h2>Useful baskets</h2>-->
+<!--								</div>-->
+<!--							</a>-->
+<!--						</li>-->
+<!--						<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url({% static 'images/gallery-6.jpg' %}); ">-->
+<!--							<a href="#" class="color-4">-->
+<!--								<div class="case-studies-summary">-->
+<!--									<span>45 Photos</span>-->
+<!--									<h2>Skater man in the road</h2>-->
+<!--								</div>-->
+<!--							</a>-->
+<!--						</li>-->
 
-						<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url({% static 'images/gallery-5.jpg' %}); ">
-							<a href="#" class="color-3">
-								<div class="case-studies-summary">
-									<span>50 Photos</span>
-									<h2>Useful baskets</h2>
-								</div>
-							</a>
-						</li>
-						<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url({% static 'images/gallery-6.jpg' %}); ">
-							<a href="#" class="color-4">
-								<div class="case-studies-summary">
-									<span>45 Photos</span>
-									<h2>Skater man in the road</h2>
-								</div>
-							</a>
-						</li>
+<!--						<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url({% static 'images/gallery-7.jpg' %}); ">-->
+<!--							<a href="#" class="color-4">-->
+<!--								<div class="case-studies-summary">-->
+<!--									<span>35 Photos</span>-->
+<!--									<h2>Two Glas of Juice</h2>-->
+<!--								</div>-->
+<!--							</a>-->
+<!--						</li>-->
 
-						<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url({% static 'images/gallery-7.jpg' %}); ">
-							<a href="#" class="color-4">
-								<div class="case-studies-summary">
-									<span>35 Photos</span>
-									<h2>Two Glas of Juice</h2>
-								</div>
-							</a>
-						</li>
-
-						<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url({% static 'images/gallery-8.jpg' %}); ">
-							<a href="#" class="color-5">
-								<div class="case-studies-summary">
-									<span>90 Photos</span>
-									<h2>Timer starts now!</h2>
-								</div>
-							</a>
-						</li>
-						<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url({% static 'images/gallery-9.jpg' %}); ">
-							<a href="#" class="color-6">
-								<div class="case-studies-summary">
-									<span>56 Photos</span>
-									<h2>Beautiful sunset</h2>
-								</div>
-							</a>
-						</li>
+<!--						<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url({% static 'images/gallery-8.jpg' %}); ">-->
+<!--							<a href="#" class="color-5">-->
+<!--								<div class="case-studies-summary">-->
+<!--									<span>90 Photos</span>-->
+<!--									<h2>Timer starts now!</h2>-->
+<!--								</div>-->
+<!--							</a>-->
+<!--						</li>-->
+<!--						<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url({% static 'images/gallery-9.jpg' %}); ">-->
+<!--							<a href="#" class="color-6">-->
+<!--								<div class="case-studies-summary">-->
+<!--									<span>56 Photos</span>-->
+<!--									<h2>Beautiful sunset</h2>-->
+<!--								</div>-->
+<!--							</a>-->
+<!--						</li>-->
 					</ul>
 				</div>
 			</div>
@@ -649,7 +544,7 @@
 
 	</body>
 </html>
-
+{% endblock %}
 
 
 

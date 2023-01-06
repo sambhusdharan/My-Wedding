@@ -14,7 +14,7 @@ class wedding(models.Model):
     Wedding_quote=models.TextField()
     image_bride=models.ImageField(upload_to='wed_img/%Y/%m/%d')
     image_groom=models.ImageField(upload_to='wed_img/%Y/%m/%d')
-    date=models.DateTimeField(auto_now=False)
+    wedding_date=models.DateTimeField(auto_now=False)
 
     def __str__(self):
         return self.name_of_groom
@@ -40,3 +40,20 @@ class story(models.Model):
     Relationship_date = models.DateField(auto_now=False)
     Say_something_about_Relationship= models.TextField()
     Image_after_in_a_Relationship = models.ImageField(upload_to='wed_img/%Y/%m/%d')
+
+class gallery(models.Model):
+    Gallery_name = models.CharField(max_length=100)
+    photo_1 = models.ImageField(upload_to='wed_img/%Y/%m/%d/' )
+    photo_2 = models.ImageField(upload_to='wed_img/%Y/%m/%d/', blank=True)
+    photo_3 = models.ImageField(upload_to='wed_img/%Y/%m/%d/', blank=True)
+    photo_4 = models.ImageField(upload_to='wed_img/%Y/%m/%d/', blank=True)
+    photo_5 = models.ImageField(upload_to='wed_img/%Y/%m/%d/', blank=True)
+    photo_6 = models.ImageField(upload_to='wed_img/%Y/%m/%d/', blank=True)
+    photo_7 = models.ImageField(upload_to='wed_img/%Y/%m/%d/', blank=True)
+    photo_8 = models.ImageField(upload_to='wed_img/%Y/%m/%d/', blank=True)
+    photo_9 = models.ImageField(upload_to='wed_img/%Y/%m/%d/', blank=True)
+    photo_10 = models.ImageField(upload_to='wed_img/%Y/%m/%d/', blank=True)
+    photo_11 = models.ImageField(upload_to='wed_img/%Y/%m/%d/', blank=True)
+    photo_12 = models.ImageField(upload_to='wed_img/%Y/%m/%d/', blank=True)
+
+
