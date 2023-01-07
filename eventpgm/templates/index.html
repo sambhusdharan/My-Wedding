@@ -40,9 +40,9 @@
 					</div>
 
 					<div class="desc-groom">
-						<h3>{{result.name_of_groom}}</h3>
-						<p>{{result.address_of_groom}}</p>
-						<p>{{result.place_of_groom}}</p>
+						<h3><b>{{result.name_of_groom}}</b></h3>
+						<p style="font-family: Lucida Handwriting;color:#070708">{{result.address_of_groom}}</p>
+						<p style="font-family: Lucida Handwriting;color:#070708">{{result.place_of_groom}}</p>
 					</div>
 
 				</div>
@@ -53,9 +53,9 @@
 						<img src="{{result.image_bride.url}}" alt="groom" class="img-responsive">
 					</div>
 					<div class="desc-bride">
-						<h3>{{result.name_of_bride}}</h3>
-                        <p>{{result.address_of_bride}}</p>
-						<p>{{result.place_of_bride}}</p>
+						<h3><b>{{result.name_of_bride}}</b></h3>
+                        <p style="font-family: Lucida Handwriting;color:#070708">{{result.address_of_bride}}</p>
+						<p style="font-family: Lucida Handwriting;color:#070708">{{result.place_of_bride}}</p>
 					</div>
 				</div>
 			</div>
@@ -190,7 +190,11 @@
 					<ul id="fh5co-gallery-list">
                        {% for photos in gallery %}
 						<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url({{ photos.photo_1.url }}); ">
-						<a href="{{ photos.photo_1.url }}">
+						<a href="{% url 'image_view' photos.id %}">
+
+<!--						{% if photos.photo_2 %}-->
+<!--						  <a href="{{ photos.photo_2.url }}">-->
+<!--						{% endif %}-->
 
 							<div class="case-studies-summary">
 								<span>14 Photos</span>
@@ -340,39 +344,19 @@
 					<div class="col-md-12 animate-box">
 						<div class="wrap-testimony">
 							<div class="owl-carousel-fullwidth">
+							{% for wishes in wish %}
 								<div class="item">
 									<div class="testimony-slide active text-center">
 										<figure>
-											<img src="{% static 'images/couple-1.jpg' %}" alt="user">
+											<img src={{wishes.image.url}} alt="user">
 										</figure>
-										<span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
+										<span>{{wishes.name}} <a href="#" class="twitter">Twitter</a></span>
 										<blockquote>
-											<p>"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics"</p>
+											<p>{{wishes.Wishes}}</p>
 										</blockquote>
 									</div>
 								</div>
-								<div class="item">
-									<div class="testimony-slide active text-center">
-										<figure>
-											<img src="{% static 'images/couple-2.jpg' %}" alt="user">
-										</figure>
-										<span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
-										<blockquote>
-											<p>"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, at the coast of the Semantics, a large language ocean."</p>
-										</blockquote>
-									</div>
-								</div>
-								<div class="item">
-									<div class="testimony-slide active text-center">
-										<figure>
-											<img src="{% static 'images/couple-3.jpg' %}" alt="user">
-										</figure>
-										<span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
-										<blockquote>
-											<p>"Far far away, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."</p>
-										</blockquote>
-									</div>
-								</div>
+							{% endfor %}
 							</div>
 						</div>
 					</div>
@@ -438,61 +422,6 @@
 	</div>
 
 
-	<div id="fh5co-started" class="fh5co-bg" style="background-image:url({% static 'images/img_bg_4.jpg' %});">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Are You Attending?</h2>
-					<p>Please Fill-up the form to notify you that you're attending. Thanks.</p>
-				</div>
-			</div>
-			<div class="row animate-box">
-				<div class="col-md-10 col-md-offset-1">
-					<form class="form-inline">
-						<div class="col-md-4 col-sm-4">
-							<div class="form-group">
-								<label for="name" class="sr-only">Name</label>
-								<input type="name" class="form-control" id="name" placeholder="Name">
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-4">
-							<div class="form-group">
-								<label for="email" class="sr-only">Email</label>
-								<input type="email" class="form-control" id="email" placeholder="Email">
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-default btn-block">I am Attending</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<footer id="fh5co-footer" role="contentinfo">
-		<div class="container">
-
-			<div class="row copyright">
-				<div class="col-md-12 text-center">
-					<p>
-						<small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
-						<small class="block">Designed by <a href="http://freehtml5.co/" target="_blank">FREEHTML5.co</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
-					</p>
-					<p>
-						<ul class="fh5co-social-icons">
-							<li><a href="#"><i class="icon-twitter"></i></a></li>
-							<li><a href="#"><i class="icon-facebook"></i></a></li>
-							<li><a href="#"><i class="icon-linkedin"></i></a></li>
-							<li><a href="#"><i class="icon-dribbble"></i></a></li>
-						</ul>
-					</p>
-				</div>
-			</div>
-
-		</div>
-	</footer>
 	</div>
 
 	<div class="gototop js-top">

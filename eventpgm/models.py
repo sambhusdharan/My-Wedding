@@ -56,4 +56,7 @@ class gallery(models.Model):
     photo_11 = models.ImageField(upload_to='wed_img/%Y/%m/%d/', blank=True)
     photo_12 = models.ImageField(upload_to='wed_img/%Y/%m/%d/', blank=True)
 
-
+class wishes(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='friends',blank=True)
+    Wishes = models.TextField()

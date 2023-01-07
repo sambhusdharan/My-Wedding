@@ -1,0 +1,280 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  vertical-align: middle;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+</style>
+<body>
+
+<!--<h2 style="text-align:center">Slideshow Gallery</h2>-->
+{% for image in image %}
+<div class="container">
+  <div class="mySlides">
+    <div class="numbertext" >1 / 12</div>
+    <center><img src="{{ image.photo_1.url }}" style="height:600px;width:600px"></center>
+  </div>
+ {% if image.photo_2 %}
+    <div class="mySlides">
+      <div class="numbertext">2 / 12</div>
+      <center><img src="{{ image.photo_2.url }}" style="height:600px;width:600px"></center>
+    </div>
+ {% endif %}
+ {% if image.photo_3 %}
+    <div class="mySlides">
+      <div class="numbertext">3 / 12</div>
+      <center><img src="{{ image.photo_3.url }}" style="height:600px;width:600px"></center>
+    </div>
+ {% endif %}
+ {% if image.photo_4 %}
+    <div class="mySlides">
+      <div class="numbertext">4 / 12</div>
+      <center><img src="{{ image.photo_4.url }}" style="height:600px;width:600px"></center>
+    </div>
+ {% endif %}
+ {% if image.photo_5 %}
+    <div class="mySlides">
+      <div class="numbertext">5 / 12</div>
+      <center><img src="{{ image.photo_5.url }}" style="height:600px;width:600px"></center>
+    </div>
+ {% endif %}
+ {% if image.photo_6 %}
+    <div class="mySlides">
+      <div class="numbertext">6 / 12</div>
+     <center><img src="{{ image.photo_6.url }}" style="height:600px;width:600px"></center>
+    </div>
+ {% endif %}
+ {% if image.photo_7 %}
+    <div class="mySlides">
+      <div class="numbertext">7 / 12</div>
+     <center><img src="{{ image.photo_7.url }}" style="height:600px;width:600px"></center>
+    </div>
+ {% endif %}
+ {% if image.photo_8 %}
+    <div class="mySlides">
+      <div class="numbertext">8 / 12</div>
+      <center><img src="{{ image.photo_8.url }}" style="height:600px;width:600px"></center>
+    </div>
+ {% endif %}
+ {% if image.photo_9 %}
+    <div class="mySlides">
+      <div class="numbertext">9 / 12</div>
+      <center><img src="{{ image.photo_9.url }}" style="height:600px;width:600px"></center>
+    </div>
+ {% endif %}
+ {% if image.photo_10 %}
+    <div class="mySlides">
+      <div class="numbertext">10 / 12</div>
+      <center><img src="{{ image.photo_10.url }}" style="height:600px;width:600px"></center>
+    </div>
+ {% endif %}
+ {% if image.photo_11 %}
+    <div class="mySlides">
+      <div class="numbertext">11 / 12</div>
+      <center><img src="{{ image.photo_11.url }}" style="height:600px;width:600px"></center>
+    </div>
+ {% endif %}
+ {% if image.photo_12 %}
+    <div class="mySlides">
+      <div class="numbertext">12 / 12</div>
+      <center><img src="{{ image.photo_12.url }}" style="height:600px;width:600px"></center>
+    </div>
+ {% endif %}
+
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <div class="row">
+
+    <div class="column">
+      <img class="demo cursor" src="{{ image.photo_1.url }}" style="width:100%" onclick="currentSlide(1)" alt="">
+    </div>
+
+  {% if image.photo_2 %}
+    <div class="column">
+      <img class="demo cursor" src="{{ image.photo_2.url }}" style="width:100%" onclick="currentSlide(2)" alt="">
+    </div>
+  {% endif %}
+  {% if image.photo_3 %}
+    <div class="column">
+      <img class="demo cursor" src="{{ image.photo_3.url }}" style="width:100%" onclick="currentSlide(3)" alt="">
+    </div>
+  {% endif %}
+  {% if image.photo_4 %}
+    <div class="column">
+      <img class="demo cursor" src="{{ image.photo_4.url }}" style="width:100%" onclick="currentSlide(4)" alt="">
+    </div>
+ {% endif %}
+ {% if image.photo_5 %}
+    <div class="column">
+      <img class="demo cursor" src="{{ image.photo_5.url }}"  style="width:100%" onclick="currentSlide(5)" alt="">
+    </div>
+     {% endif %}
+ {% if image.photo_6 %}
+    <div class="column">
+      <img class="demo cursor" src="{{ image.photo_6.url }}" style="width:100%" onclick="currentSlide(6)" alt="">
+    </div>
+ {% endif %}
+ {% if image.photo_7 %}
+    <div class="column">
+      <img class="demo cursor" src="{{ image.photo_7.url }}" style="width:100%" onclick="currentSlide(7)" alt="">
+    </div>
+     {% endif %}
+ {% if image.photo_8 %}
+    <div class="column">
+      <img class="demo cursor" src="{{ image.photo_8.url }}" style="width:100%" onclick="currentSlide(8)" alt="">
+    </div>
+ {% endif %}
+ {% if image.photo_9 %}
+    <div class="column">
+      <img class="demo cursor" src="{{ image.photo_9.url }}" style="width:100%" onclick="currentSlide(9)" alt="">
+    </div>
+     {% endif %}
+ {% if image.photo_10 %}
+    <div class="column">
+      <img class="demo cursor" src="{{ image.photo_10.url }}" style="width:100%" onclick="currentSlide(10)" alt="">
+    </div>
+ {% endif %}
+ {% if image.photo_11 %}
+    <div class="column">
+      <img class="demo cursor" src="{{ image.photo_11.url }}" style="width:100%" onclick="currentSlide(11)" alt="" >
+    </div>
+     {% endif %}
+ {% if image.photo_12 %}
+    <div class="column">
+      <img class="demo cursor" src="{{ image.photo_12.url }}" style="width:100%" onclick="currentSlide(12)" alt="">
+    </div>
+ {% endif %}
+
+  </div>
+</div>
+ {% endfor %}
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("demo");
+  let captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+
+</body>
+</html>
