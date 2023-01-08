@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from django.shortcuts import render,redirect
 from django.db.models import Count
+
 #from django.http import HttpResponse
 from .models import *
 
@@ -28,3 +31,18 @@ def imageview(request,id,count=0):
         count=count+1
         print(count)
     return render(request,'image_viewer.html',{'image':image})
+
+def base(request):
+    if request.method == 'POST':
+        name=request.POST['name']
+        email=request.POST['email']
+    admin_detail = User.objects.get(is_superuser=True)
+    admin_email = admin_detail.email
+    send_mail(
+        'You have one message !',
+        'one is attenting the wedding with name: ' + name + ' and email id: ' + email + ' Please note this message',
+        'myweddingcorp23@gmail.com',  # from email address
+        [admin_email],  # To email address
+        fail_silently=False,
+          )
+    return redirect('home')
