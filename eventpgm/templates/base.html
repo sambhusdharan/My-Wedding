@@ -75,31 +75,52 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-2">
-					<div id="fh5co-logo"><a href="index.html"> My Wedding<strong>.</strong></a></div>
+					<div id="fh5co-logo"><a href="{% url 'home' %}"> My Wedding<strong>.</strong></a></div>
 				</div>
 				<div class="col-xs-10 text-right menu-1">
 					<ul>
-						<li class="active"><a href="{% url 'home' %}">Home</a></li>
-						<li><a href="{% url 'memories' %}">Story</a></li>
-						<li class="has-dropdown">
+						<li
+						 {% if '/' == request.path %}
+						 class="active"
+						 {% else %}
+						 class="inactive"
+						 {% endif %}
+
+								><a  href="{% url 'home' %}">Home</a></li>
+
+						<li
+						{% if '/memories' == request.path %}
+						class="active"
+						{% else %}
+						class="inactive"
+						{% endif %}
+						><a href="{% url 'memories' %}">Story</a></li>
+
+						<li
+						{% if '/manage/' == request.path %}
+						class="active"
+						{% else %}
+						class="inactive"
+						{% endif %}
+						>
 							<a href="{% url 'services' %}">Services</a>
-							<ul class="dropdown">
-								<li><a href="#">Web Design</a></li>
-								<li><a href="#">eCommerce</a></li>
-								<li><a href="#">Branding</a></li>
-								<li><a href="#">API</a></li>
-							</ul>
 						</li>
-						<li class="has-dropdown">
+						<li
+						{% if '/manage/gallery/' == request.path %}
+						class="active"
+						{% else %}
+						class="inactive"
+						{% endif %}
+						>
 							<a href="{% url 'photogallery' %}">Gallery</a>
-							<ul class="dropdown">
-								<li><a href="#">HTML5</a></li>
-								<li><a href="#">CSS3</a></li>
-								<li><a href="#">Sass</a></li>
-								<li><a href="#">jQuery</a></li>
-							</ul>
 						</li>
-						<li><a href="{% url 'contact' %}">Contact</a></li>
+						<li
+                        {% if '/manage/contact/' == request.path %}
+                        class="active"
+						{% else %}
+						class="inactive"
+						{% endif %}
+						><a href="{% url 'contact' %}">Contact</a></li>
 					</ul>
 				</div>
 			</div>
@@ -150,15 +171,15 @@
 			<div class="row copyright">
 				<div class="col-md-12 text-center">
 					<p>
-						<small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
-						<small class="block">Designed by <a href="http://freehtml5.co/" target="_blank">FREEHTML5.co</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
+<!--						<small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>-->
+						<small class="block">contact us <a href="http://freehtml5.co/" target="_blank">for wedding events and queries</a>
 					</p>
 					<p>
 						<ul class="fh5co-social-icons">
-							<li><a href="#"><i class="icon-twitter"></i></a></li>
-							<li><a href="#"><i class="icon-facebook"></i></a></li>
-							<li><a href="#"><i class="icon-linkedin"></i></a></li>
-							<li><a href="#"><i class="icon-dribbble"></i></a></li>
+							<li><a href="https://twitter.com/"><i class="icon-twitter"></i></a></li>
+							<li><a href="https://www.facebook.com/"><i class="icon-facebook"></i></a></li>
+							<li><a href="https://in.linkedin.com/"><i class="icon-linkedin"></i></a></li>
+							<li><a href=""><i class="icon-dribbble"></i></a></li>
 						</ul>
 					</p>
 				</div>

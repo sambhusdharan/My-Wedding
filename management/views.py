@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from eventpgm.models import *
 from .models import contact
+
 # Create your views here.
 def services(request):
     obj = wedding.objects.all()
